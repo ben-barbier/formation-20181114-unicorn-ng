@@ -9,7 +9,7 @@ import {CartService} from '../../services/cart.service';
     templateUrl: './unicorn-card.component.html',
     styleUrls: ['./unicorn-card.component.scss']
 })
-export class UnicornCardComponent {
+export class UnicornCardComponent implements OnInit {
 
     @Input()
     public unicorn: Unicorn;
@@ -22,11 +22,14 @@ export class UnicornCardComponent {
     constructor(private unicornsService: UnicornsService,
                 private snackBar: MatSnackBar,
                 private cartService: CartService) {
+    }
 
-        cartService.cart.subscribe((cart) => {
+    public ngOnInit(): void {
+        debugger;
+        this.cartService.cart.subscribe((cart) => {
+            debugger;
             this.isFavorite = !!cart.find((u) => u.id === this.unicorn.id);
         });
-
     }
 
     public remove() {

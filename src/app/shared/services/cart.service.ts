@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Unicorn} from '../../models/unicorn.model';
-import {State, Store} from '@ngrx/store';
+import {select, State, Store} from '@ngrx/store';
 import {AppState} from '../../store/app.state';
 import {AddUnicornToCart, RemoveUnicornFromCart} from '../../store/actions/cart.actions';
-import {pluck} from 'rxjs/operators';
 import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
@@ -11,7 +10,7 @@ import {BehaviorSubject} from 'rxjs';
 })
 export class CartService {
 
-    public cart = this.state.pipe(pluck('cart')) as BehaviorSubject<Unicorn[]>;
+    public cart = this.state.pipe(select('cart'));
 
     constructor(private store: Store<AppState>,
                 private state: State<AppState>) {
@@ -26,7 +25,8 @@ export class CartService {
     }
 
     public toggle(unicorn: Unicorn): void {
-        const unicornIsInCart = !!this.cart.getValue().find((u) => {
+
+        const unicornIsInCart = !!this.state.getValue().cart.find((u) => {
             return u.id === unicorn.id;
         });
         if (unicornIsInCart) {
