@@ -1,0 +1,14 @@
+:host {
+    padding: 10px;
+    display: inline-block;
+}
+
+img {
+    max-width: 300px;
+}
+
+mat-card-actions {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 4px !important;
+}

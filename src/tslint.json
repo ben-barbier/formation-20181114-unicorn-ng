@@ -12,6 +12,7 @@
             "element",
             "uni",
             "kebab-case"
-        ]
+        ],
+        "member-access": true
     }
 }

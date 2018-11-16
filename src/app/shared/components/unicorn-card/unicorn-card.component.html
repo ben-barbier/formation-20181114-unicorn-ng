@@ -1,0 +1,31 @@
+<div *ngIf="unicorn">
+
+    <mat-card class="example-card">
+        <mat-card-header>
+            <img mat-card-avatar [src]="unicorn.photo">
+            <mat-card-title>{{ unicorn.name | magicalName }}</mat-card-title>
+            <mat-card-subtitle>id: {{ unicorn.id }}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="unicorn.photo">
+        <mat-card-content>
+            <ul>
+                <li *ngFor="let label of unicorn.capacityLabels">{{ label }}</li>
+            </ul>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-mini-fab [color]="isFavorite?'accent':'primary'" (click)="toggle()">
+                <mat-icon>favorite</mat-icon>
+            </button>
+            <button mat-mini-fab color="primary" [routerLink]="['/unicorn-details', unicorn.id]">
+                <mat-icon>remove_red_eye</mat-icon>
+            </button>
+            <button mat-mini-fab color="primary">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-mini-fab color="primary" (click)="remove()">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+
+</div>

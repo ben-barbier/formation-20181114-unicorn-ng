@@ -1,0 +1,9 @@
+<h1>Average Age : !{{ averageAge | async }}!</h1>
+
+<section>
+<uni-unicorn-card
+    *ngFor="let unicorn of unicorns"
+    [unicorn]="unicorn"
+    (removed)="removeUnicornFromList(unicorn)"
+></uni-unicorn-card>
+</section>

@@ -1,0 +1,44 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+                 [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+                 [mode]="(isHandset$ | async) ? 'over' : 'side'"
+                 [opened]="!(isHandset$ | async)">
+        <mat-toolbar>
+            <span>Menu</span>
+        </mat-toolbar>
+        <mat-nav-list>
+            <a mat-list-item
+               routerLinkActive="active"
+               [routerLinkActiveOptions]="{exact:true}"
+               [routerLink]="['unicorn-list']">List</a>
+            <a mat-list-item
+               routerLinkActive="active"
+               [routerLinkActiveOptions]="{exact:true}"
+               [routerLink]="['unicorn-details', 3]">Unicorn 3</a>
+            <a mat-list-item
+               routerLinkActive="active"
+               [routerLinkActiveOptions]="{exact:true}"
+               [routerLink]="['admin/roles']">Admin</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <button
+                type="button"
+                aria-label="Toggle sidenav"
+                mat-icon-button
+                (click)="drawer.toggle()"
+                *ngIf="isHandset$ | async">
+                <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+            </button>
+            <span>unicorn-ng</span>
+            <span class="spacer"></span>
+            <span>{{(cart | async).length }}</span>
+            <mat-icon color="accent">favorite</mat-icon>
+        </mat-toolbar>
+
+        <!-- Add Content Here -->
+        <router-outlet></router-outlet>
+
+    </mat-sidenav-content>
+</mat-sidenav-container>
