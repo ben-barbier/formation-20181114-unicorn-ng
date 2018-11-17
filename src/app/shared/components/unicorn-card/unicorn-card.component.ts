@@ -25,9 +25,7 @@ export class UnicornCardComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-        debugger;
         this.cartService.cart.subscribe((cart) => {
-            debugger;
             this.isFavorite = !!cart.find((u) => u.id === this.unicorn.id);
         });
     }
