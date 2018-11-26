@@ -25,7 +25,7 @@ describe('UnicornListComponent', () => {
 
         // When
 
-        //Then
+        // Then
         expect(component).toBeTruthy();
     });
 });
